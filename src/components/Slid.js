@@ -53,6 +53,7 @@ class Slid extends React.Component {
         min={1}
         max={10}
         marks={marks}
+        defaultValue={1}
         values={this.state.values}
         valueLabelDisplay='auto'
         onChange={(values) => this.setState({ values })}

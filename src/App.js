@@ -1,94 +1,120 @@
 import React, {useState} from 'react'
-import Slid from './components/Slid'
+// import Slid from './components/Slid'
+import Slides from './components/Slides'
 import Prog from './components/Prog'
 import Pagin from './components/Pagination'
 import Navbar from './components/Navbar'
 import AllScore from './components/AllScore'
 import './App.css';
 
-const App = () =>{
+const App = (props) =>{
   const [ques, setQues] = useState([
     {
       "id": 1,
+      "Score": 1,
       "title": "Rate the Hotel"
     },
     {
       "id": 2,
+      "Score": 2,
       "title": "Rate the Rooms"
     },
     {
       "id": 3,
+      "Score": 3,
       "title": "Rate the Canteen"
     },
     {
       "id": 4,
+      "Score": 4,
       "title": "Rate the Food"
     },
     {
       "id": 5,
+      "Score": 1,
       "title": "Rate the Travelling"
     },
     {
       "id": 6,
+      "Score": 1,
       "title": "Rate the Table"
     },
     {
       "id": 7,
+      "Score": 1,
       "title": "Rate the Car"
     },
     {
       "id": 8,
+      "Score": 1,
       "title": "Rate the Bike"
     },
     {
       "id": 9,
+      "Score": 1,
       "title": "Rate the Places"
     },
     {
       "id": 10,
+      "Score": 1,
       "title": "Rate the Staff"
     },
     {
       "id": 11,
+      "Score": 1,
       "title": "Rate the Hotel"
     },
     {
       "id": 12,
+      "Score": 1,
       "title": "Rate the Rooms"
     },
     {
       "id": 13,
+      "Score": 1,
       "title": "Rate the Canteen"
     },
     {
       "id": 14,
+      "Score": 1,
       "title": "Rate the Food"
     },
     {
       "id": 15,
+      "Score": 1,
       "title": "Rate the Travelling"
     },
     {
       "id": 16,
+      "Score": 1,
       "title": "Rate the Table"
     },
     {
       "id": 17,
+      "Score": 1,
       "title": "Rate the Car"
     },
     {
       "id": 18,
+      "Score": 1,
       "title": "Rate the Bike"
     },
     {
       "id": 19,
+      "Score": 1,
       "title": "Rate the Places"
     },
     {
       "id": 20,
+      "Score": 1,
       "title": "Rate the Staff"
     },
   ]);
+
+  function updateScore(scoreVal){
+    console.log(scoreVal)
+    // console.log(id)
+  }
 
   const [showPerPage, setShowPerPage] = useState(5);
 
@@ -122,7 +148,7 @@ const App = () =>{
                 <div className="card-body">
                   <h5 className="question">{question.id}. {question.title}</h5>
                 </div>
-                <Slid />                  
+                <Slides score= {question.Score} updateScore= {updateScore()}/>                  
               </div>
             </div>
         ))}
@@ -130,7 +156,8 @@ const App = () =>{
       <Pagin
             showPerPage={showPerPage} 
             onPaginChange={onPaginChange}
-            total= {ques.length}       />
+            total= {ques.length}       
+            />
       </div>
     </div>
   )
