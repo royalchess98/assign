@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-// import Slid from './components/Slid'
 import Slides from './components/Slides'
 import Prog from './components/Prog'
 import Pagin from './components/Pagination'
