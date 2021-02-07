@@ -111,10 +111,10 @@ const App = (props) =>{
     },
   ]);
 
-  function updateScore(scoreVal){
-    console.log(scoreVal)
-    // console.log(id)
-  }
+
+  const handleSlider = (val) => {
+    console.log(val)
+  };
 
   const [showPerPage, setShowPerPage] = useState(5);
 
@@ -148,7 +148,7 @@ const App = (props) =>{
                 <div className="card-body">
                   <h5 className="question">{question.id}. {question.title}</h5>
                 </div>
-                <Slides score= {question.Score} updateScore= {updateScore()}/>                  
+                <Slides score= {question.Score} onChangeSlider={handleSlider}/>                  
               </div>
             </div>
         ))}

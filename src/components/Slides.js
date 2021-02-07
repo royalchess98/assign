@@ -7,9 +7,9 @@ const Slides = (props) => {
     
     // console.log(val)
     const updateVal=(e, val)=>{
-        setVal(val)
         // props.updateScore()
-        console.log(val)
+        // console.log(val);
+        props.onChangeSlider(val);
     }
 
     return (
