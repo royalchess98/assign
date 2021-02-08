@@ -5,7 +5,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const Prog = (props) => {
   const progress = Math.ceil((props.score/(props.total * 10))*100) ;
   
-
   let color= "danger"
       
         if (progress > 33 && progress < 66)
@@ -23,7 +22,7 @@ const Prog = (props) => {
             <div className="col-md-8 center">
                   <div>     
                         <ProgressBar 
-                          style={{width:360, height:20, marginTop:20}} 
+                          style={{width:360,fontSize:"13px", height:20, marginTop:20}} 
                           now={progress}
                           animated striped variant= {color}
                           label={`Progress ${progress} %`} />

@@ -5,13 +5,15 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const FeedbackScore = (props) => {
   const progress = Math.ceil((props.score/(props.total * 10))*100) ;
   let color= "danger"
-      
+  let feedback = "Bad"    
         if (progress > 33 && progress < 66)
           {
+            feedback = "Good"
             color = "info";
           }
         else if (progress >= 66)
           {
+            feedback = "Excellent"
             color = "success";
           }
   
@@ -28,10 +30,10 @@ const FeedbackScore = (props) => {
                   >Thank you for your feedback </h3>
                   <div>     
                         <ProgressBar 
-                          style={{width:360, height: 30, marginTop:60, marginLeft:165}} 
+                          style={{width:360, fontSize:"20px", height: 30, marginTop:60, marginLeft:165}} 
                           now={progress} 
                           animated striped variant={color}
-                          label={`Rating ${progress} %`} />
+                          label={`${feedback} ${progress} %`} />
                   </div>
                   <div className="d-xl-flex flex-row justify-content-around"
                           style={{width:360, height: 30, marginTop:60, marginLeft:165}} 
