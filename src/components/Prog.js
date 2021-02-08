@@ -9,7 +9,7 @@ const Prog = (props) => {
       
         if (progress > 33 && progress < 66)
           {
-            color = "info";
+            color = "warning";
           }
         else if (progress >= 66)
           {

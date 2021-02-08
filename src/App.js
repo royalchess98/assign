@@ -7,6 +7,9 @@ import './App.css';
 import FeedbackScore from './components/FeedbackScore'
 
 const App = (props) =>{
+
+  // created dummy questions array
+  
   const [ques,updateMyArray] = useState([
     {
       "id": 1,
@@ -109,6 +112,7 @@ const App = (props) =>{
       "title": "Rate the Staff"
     },
   ]);
+  // created the hook to manage slider data
   const [totalScore, updateTotalScore] = useState(0); 
   const handleSlider = (id, val) => {
     console.log(val);
@@ -125,6 +129,7 @@ const App = (props) =>{
       tempScore = tempScore+ item.Score
       return item;
     });
+    // updation of array
     updateMyArray(newList);
     updateTotalScore(tempScore);
   }
@@ -139,6 +144,7 @@ const App = (props) =>{
   //   let arr[ ] = 
   // };
 
+  //Created the pagination for as per 5 pages per page
   const [showPerPage, setShowPerPage] = useState(5);
 
   const [pagin, setPagin] = useState({
@@ -152,7 +158,9 @@ const App = (props) =>{
 
   return(
     <div className="App">
+    {/*Navbar*/}
       <Navbar />
+      {/* ProgressBar */}
        <div className="container py-0">
           <div className="row justify-content-md-center">
               <div className="col-md-6">
@@ -163,6 +171,8 @@ const App = (props) =>{
               </div> */}
           </div>
       </div> 
+
+      {/* Card container for showing questions and sliders */}
       <div className="container py-1">
         <div className="row">
           {ques.slice(pagin.start, pagin.end).map((question) => (
@@ -179,6 +189,7 @@ const App = (props) =>{
             </div>
         ))}
         </div>
+      {/* Pagination Buttons  UI */}
       <Pagin
             showPerPage={showPerPage} 
             onPaginChange={onPaginChange}
@@ -186,6 +197,7 @@ const App = (props) =>{
             // onSubmitted={handleSubmit}  
             />
       </div>
+      {/* Feedback submited score Card */}
       <FeedbackScore 
           score={totalScore} 
           total= {ques.length}/>

@@ -12,7 +12,7 @@ const AllScore = (props) => {
         }
   else if (progress < 66)
         {
-           const color = "warning";
+           const color = "info";
         }
   else if (progress >= 33 && progress <= 66)
         {
