@@ -26,7 +26,7 @@ const Prog = (props) => {
                           style={{width:360, height:20, marginTop:20}} 
                           now={progress}
                           animated striped variant= {color}
-                          label={`Rating ${progress} %`} />
+                          label={`Progress ${progress} %`} />
                   </div>
             </div>
           </div>
