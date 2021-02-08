@@ -38,7 +38,7 @@ const FeedbackScore = (props) => {
                   <div className="d-xl-flex flex-row justify-content-around"
                           style={{width:360, height: 30, marginTop:60, marginLeft:165}} 
                   >
-                      <button href="/" className="btn btn-primary">Reset</button>
+                      {/* <button href="/" className="btn btn-primary">Reset</button> */}
                       {/* <button href="/" className="btn btn-success">Submit</button> */}
                   </div>
                 </div>
