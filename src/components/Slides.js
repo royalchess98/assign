@@ -10,7 +10,7 @@ const Slides = (props) => {
         // props.updateScore()
         setVal(val);
         // console.log(val);
-        props.onChangeSlider(val);
+        props.onChangeSlider(props.id, val);
     }
     const marks = [
       {

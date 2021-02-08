@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import Slides from './components/Slides'
-import Prog from './components/Prog'
 import Pagin from './components/Pagination'
 import Navbar from './components/Navbar'
-import AllScore from './components/AllScore'
+import Prog from './components/Prog'
 import './App.css';
+import FeedbackScore from './components/FeedbackScore'
 
 const App = (props) =>{
-  const [ques, setQues] = useState([
+  const [ques,updateMyArray] = useState([
     {
       "id": 1,
       "Score": 1,
@@ -15,17 +15,17 @@ const App = (props) =>{
     },
     {
       "id": 2,
-      "Score": 2,
+      "Score": 1,
       "title": "Rate the Rooms"
     },
     {
       "id": 3,
-      "Score": 3,
+      "Score": 1,
       "title": "Rate the Canteen"
     },
     {
       "id": 4,
-      "Score": 4,
+      "Score": 1,
       "title": "Rate the Food"
     },
     {
@@ -61,27 +61,27 @@ const App = (props) =>{
     {
       "id": 11,
       "Score": 1,
-      "title": "Rate the Hotel"
+      "title": "Rate the Table"
     },
     {
       "id": 12,
       "Score": 1,
-      "title": "Rate the Rooms"
+      "title": "Rate the Car"
     },
     {
       "id": 13,
       "Score": 1,
-      "title": "Rate the Canteen"
+      "title": "Rate the Bike"
     },
     {
       "id": 14,
       "Score": 1,
-      "title": "Rate the Food"
+      "title": "Rate the Places"
     },
     {
       "id": 15,
       "Score": 1,
-      "title": "Rate the Travelling"
+      "title": "Rate the Staff"
     },
     {
       "id": 16,
@@ -109,11 +109,35 @@ const App = (props) =>{
       "title": "Rate the Staff"
     },
   ]);
+  const [totalScore, updateTotalScore] = useState(0); 
+  const handleSlider = (id, val) => {
+    console.log(val);
+    let tempScore = 0
+    const newList = ques.map((item) => {
+      if (item.id === id) {
+        const updatedItem = {
+          ...item,
+          Score: val,
+        };
+        tempScore = tempScore+ item.Score
+        return updatedItem;
+      }
+      tempScore = tempScore+ item.Score
+      return item;
+    });
+    updateMyArray(newList);
+    updateTotalScore(tempScore);
+  }
 
 
-  const handleSlider = (val) => {
-    console.log(val)
-  };
+  // const handleSlider = (val) => {
+  //   console.log(val);
+  //   // updateMyArray([...ques,{
+  //   //   id: ques.id,
+  //   //   value:val
+  //   // }])
+  //   let arr[ ] = 
+  // };
 
   const [showPerPage, setShowPerPage] = useState(5);
 
@@ -129,25 +153,28 @@ const App = (props) =>{
   return(
     <div className="App">
       <Navbar />
-      <div className="container py-0">
-          <div className="row">
-              <div className="col-md-6 mt-5 center">
-                  <Prog />
+       <div className="container py-0">
+          <div className="row justify-content-md-center">
+              <div className="col-md-6">
+                  <Prog score={totalScore} total= {ques.length}/>
               </div>
-              <div className="col-md-6 mt-5 center">
-                  <AllScore />
-              </div>
+              {/* <div className="col-md-6 mt-5 center">
+                  <AllScore score= {totalScore} />
+              </div> */}
           </div>
-      </div>
-      <div className="container py-2">
+      </div> 
+      <div className="container py-1">
         <div className="row">
           {ques.slice(pagin.start, pagin.end).map((question) => (
-            <div className="col-md-4 mb-4" key={question.id}>
+            <div className="col-md-4 mb-3" key={question.id}>
               <div className="card">
                 <div className="card-body">
                   <h5 className="question">{question.id}. {question.title}</h5>
                 </div>
-                <Slides score= {question.Score} onChangeSlider={handleSlider}/>                  
+                <Slides 
+                    score= {question.Score} 
+                    id={question.id} 
+                    onChangeSlider={handleSlider}/>                  
               </div>
             </div>
         ))}
@@ -155,9 +182,13 @@ const App = (props) =>{
       <Pagin
             showPerPage={showPerPage} 
             onPaginChange={onPaginChange}
-            total= {ques.length}       
+            total= {ques.length}     
+            // onSubmitted={handleSubmit}  
             />
       </div>
+      <FeedbackScore 
+          score={totalScore} 
+          total= {ques.length}/>
     </div>
   )
 }

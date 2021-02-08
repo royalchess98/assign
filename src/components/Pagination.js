@@ -2,16 +2,13 @@ import React, {useState, useEffect} from 'react'
 
 const Pagination = ({ showPerPage, onPaginChange, total }) => {
     const[counter, setCounter] = useState(1)
-
+    
+    let pages = Math.ceil(total/showPerPage);   
     useEffect(() => {
-        const value = showPerPage * counter;    
+        const value = showPerPage * counter; 
         onPaginChange(value - showPerPage, value);
     },[counter]);
-
-    // const onSubmit = () =>{
-
-    // }
-
+  
     const onButtonClick = (type) => {
         if (type === "prev")
         {
@@ -22,7 +19,7 @@ const Pagination = ({ showPerPage, onPaginChange, total }) => {
                 setCounter(counter - 1)
             }
         } else if (type === "next"){
-            if(Math.ceil(total/showPerPage) === counter){
+            if(pages === counter){
                 setCounter(counter)
             }
             else{
@@ -30,17 +27,31 @@ const Pagination = ({ showPerPage, onPaginChange, total }) => {
             }
         }
     };
+
+    // const [submit, setSubmit] = useState(false)
+
+    // const idSubmit=(e, submit)=>{
+    //     // props.updateScore()
+    //     setVal(submit);
+    //     // console.log(val);
+    //     props.onSubmit();
+    // }
+
     return (
-        <div className="d-flex justify-content-between">
-            <button className="btn btn-primary" onClick={() => onButtonClick('prev')}>
+        <div className="d-xl-flex flex-row justify-content-around ">
+            <button className="btn btn-primary" 
+                hidden= {counter === 1 }
+                onClick={() => onButtonClick('prev')}>
                 Previous
             </button>
-            <button className="btn btn-primary" onClick={() => onButtonClick('next')}>
+            <button className="btn btn-primary" 
+            hidden= {counter === pages}   onClick={() => onButtonClick('next')}>
                 Next
             </button>
-            {/* <button className="btn btn-primary" onClick={() => onSubmit()}>
-                Submit
-            </button> */}
+            <button className="btn btn-success "
+            hidden= {counter !== pages} >
+                         Submit
+            </button>
         </div>
     )
 }

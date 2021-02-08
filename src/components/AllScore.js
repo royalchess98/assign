@@ -2,9 +2,9 @@ import React from 'react';
 import { ProgressBar } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-const AllScore = () => {
+const AllScore = (props) => {
 
-  const progress = 50;
+  const progress = props.score;
   const getcolor = (progress) =>{
   if (progress < 33)
         {
@@ -25,7 +25,7 @@ const AllScore = () => {
         style={{width:360, marginTop:-2, marginLeft:125}} 
         now={progress} 
         animated striped variant={getcolor()}
-        label={`Total Score ${progress}% `} />
+        label={`Total Score ${progress} `} />
     </div>
   );
 }
