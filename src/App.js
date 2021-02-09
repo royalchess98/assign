@@ -130,8 +130,8 @@ const App = (props) =>{
       return item;
     });
     // updation of array
-    updateMyArray(newList);
     updateTotalScore(tempScore);
+    updateMyArray(newList);
   }
 
 
